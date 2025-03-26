@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Zaynab Ait Addi</title>
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="stars.css">
+    <link rel="stylesheet" href="morning-sky.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&family=Space+Mono&family=Nova+Square&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <div class="image-wrapper">
+            <img id="modeImage" src="PF/Darkmode.gif" alt="Mode Image">
+            <div class="floating-text" id="floatingText"></div>
+            <div class="author-name" id="authorName">Zaynab Ait Addi</div>
+            <!-- Mode Toggle Button -->
+            <button id="toggleButton">
+                <span class="icon">🌙</span>
+            </button>
+            <!-- Portfolio Menu Arrow -->
+            <div class="arrow" id="portfolioArrow">
+                <span class="menu-label">Menu</span>
+                <span class="arrow-icon">⭐</span>
+            </div>
+            <!-- Portfolio Menu (with Cat Ears and Eyes) -->
+            <div class="portfolio-menu" id="portfolioMenu">
+                <div class="left-eye"></div>
+                <div class="right-eye"></div>
+                <a href="PF.html">Home</a>
+                <a href="about.html">About Me</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <div class="projects-content">
+            <div class="projects-card">
+                <h1>My Projects</h1>
+                <div class="projects-grid">
+                    <!-- Project 1: Leave Request Management System (LRMS) -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-icon">📂</span>
+                            <h2>Leave Request Management System (LRMS)</h2>
+                        </div>
+                        <!-- Add the Video Here -->
+                        <div class="video-container">
+                            <video controls loop muted class="project-video">
+                                <source src="PF/LRMS.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="project-description">
+                            <p>
+                                Leave Request Management System, a terminal-based application developed in C. This project was a fantastic opportunity to dive deep into system design, file handling, and user management while creating a practical tool for organizations to manage employee leave requests efficiently.
+                            </p>
+                            <h3>✨ What does it do?</h3>
+                            <p>
+                                The system allows Employees to request leave, track their leave history, and update their profiles, while Managers can approve/reject requests, review pending sign-ups, and generate detailed leave statistics. It also includes features like secure password handling, password recovery, and cross-platform compatibility.
+                            </p>
+                            <h3>💡 Why this project?</h3>
+                            <p>
+                                I wanted to challenge myself to build a functional, real-world application using core programming concepts. It was a great way to strengthen my skills in C programming, problem-solving, and system design while creating something that could genuinely be useful in a professional setting.
+                            </p>
+                            <h3>🔧 Technical Highlights:</h3>
+                            <ul>
+                                <li>Data Storage: Binary files for persistence (`users.dat`, `leave_requests.dat`, etc.).</li>
+                                <li>UI: Terminal-based with ANSI color codes for a clean and readable interface.</li>
+                                <li>Cross-Platform: Works seamlessly on both Windows and Unix-based systems.</li>
+                            </ul>
+                            <h3>🔗 Check it out:</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/Zinoh0A/Leave-Request-Management-System-LRMS-.git" target="_blank" class="github-link">GitHub Repository</a>
+                                <a href="https://www.linkedin.com/posts/zaynab-ait-addi-688708271_programming-cprogramming-softwaredevelopment-activity-7298797239664070656-XaCm?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEJ9ncgBXcuiDBeBOP2couaoim6jrTod9-g" target="_blank" class="linkedin-link">LinkedIn Post</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder for Future Projects -->
+                    <div class="project-card coming-soon">
+                        <div class="project-header">
+                            <span class="project-icon">🚧</span>
+                            <h2>More Projects Coming Soon!</h2>
+                        </div>
+                        <div class="project-description">
+                            <p>Stay tuned for more exciting projects! I'm constantly working on new ideas and will update this section with my latest work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="projects.js"></script>
+    <script src="stars.js"></script>
+    <script src="morning-sky.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s ease;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 800px; /* Limits the container width for larger screens */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-wrapper {
+    position: relative; /* Allows absolute positioning of the button and arrow */
+    display: inline-block; /* Ensures the wrapper fits the image size */
+    width: 100%;
+    filter: contrast(130%) brightness(100%) saturate(130%) hue-rotate(1deg) sepia(15%) drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+body.light-mode .signature {
+    color: #003366;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-left: 3px solid rgba(0, 99, 199, 0.6);
+}
+
+body.light-mode .signature:hover {
+    text-shadow: 0 0 8px rgba(0, 99, 199, 0.9), 0 0 15px rgba(0, 99, 199, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-left: 3px solid rgba(0, 99, 199, 0.9);
+}
+
+img {
+    max-width: 100%; /* Ensures the image is responsive */
+    height: auto;
+    border-radius: 30px; /* Adds a slight rounded corner for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease; /* Smooth hover and mode transition */
+}
+
+img:hover {
+    transform: scale(1.02); /* Slightly enlarges the image on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 128, 255, 0.3); /* Enhances shadow on hover with glow */
+}
+
+button {
+    position: absolute; /* Positions the button relative to the image */
+    top: 15px; /* Distance from the top of the image */
+    right: 15px; /* Distance from the right of the image */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border: none;
+    border-radius: 50%; /* Makes the button circular */
+    width: 40px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    font-size: 20px; /* Icon size */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Fancy transition */
+    overflow: hidden; /* Ensures the icon doesn't overflow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+button:hover {
+    background: rgba(95, 176, 251, 0.4); /* Fully white on hover */
+    transform: scale(1.1) rotate(5deg); /* Slightly enlarges and rotates the button on hover */
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.icon {
+    display: inline-block;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Arrow Styles */
+.arrow {
+    position: absolute; /* Positions the arrow relative to the image */
+    bottom: 20px; /* Distance from the bottom of the image */
+    right: 20px; /* Distance from the right of the image */
+    font-size: 30px; /* Arrow size */
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8); /* Semi-transparent white color */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and label */
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.arrow:hover {
+    color: rgba(255, 255, 255, 1); /* Fully white on hover */
+    transform: scale(1.1); /* Slightly enlarges the arrow on hover */
+    background: rgba(0, 128, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 128, 255, 0.3);
+}
+
+.arrow .menu-label {
+    font-size: 16px; /* Smaller font size for the label */
+    opacity: 0.7; /* Slightly transparent */
+    font-family: 'Space Mono', monospace;
+    transition: opacity 0.3s ease;
+}
+
+.arrow:hover .menu-label {
+    opacity: 1; /* Fully visible on hover */
+}
+
+.arrow-icon {
+    transition: transform 0.4s ease;
+}
+
+.arrow:hover .arrow-icon {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Updated Cat Ears Styles */
+.portfolio-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 20px;
+    background: rgba(15, 20, 40, 0.938);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.337), 0 0 15px rgba(0, 128, 255, 0.304);
+    border: 1px solid rgba(0, 128, 255, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 20px 15px 15px 15px;
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    transform-origin: bottom right;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(5px);
+    border-top: 700px;
+}
+
+/* Cat Ears Style */
+.portfolio-menu::before,
+.portfolio-menu::after {
+    content: '';
+    position: absolute;
+    top: -25px; /* Positioned above the menu */
+    height: 20px; /* Taller ears */
+    width: 40px; /* Wider base */
+    background-color: transparent;
+    z-index: 1; /* Changed from -1 to 1 */
+}
+
+/* Left ear */
+.portfolio-menu::before {
+    left: 9%; /* Move the left ear further to the left */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle shape */
+    background-color: rgba(15, 20, 40, 0.98); /* Same as menu background */
+    transform-origin: bottom center;
+    transform: rotate(-10deg);
+    animation: leftPointyEarWiggle 3s infinite ease-in-out;
+}
+
+/* Right ear */
+.portfolio-menu::after {
+    right: 9%; /* Move the right ear further to the right */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle shape */
+    background-color: rgba(15, 20, 40, 0.98); /* Same as menu background */
+    transform-origin: bottom center;
+    transform: rotate(10deg);
+    animation: rightPointyEarWiggle 3s infinite ease-in-out;
+}
+/* Cat ears animations */
+@keyframes leftEarWiggle {
+    0%, 100% { transform: rotate(-15deg) skewX(30deg); }
+    30% { transform: rotate(-5deg) skewX(25deg); }
+    50% { transform: rotate(-25deg) skewX(35deg); }
+    70% { transform: rotate(-10deg) skewX(28deg); }
+}
+
+@keyframes rightEarWiggle {
+    0%, 100% { transform: rotate(15deg) skewX(-30deg); }
+    30% { transform: rotate(25deg) skewX(-25deg); }
+    50% { transform: rotate(5deg) skewX(-35deg); }
+    70% { transform: rotate(20deg) skewX(-28deg); }
+}
+
+
+/* Cat eyes - using different selectors */
+.portfolio-menu .left-eye,
+.portfolio-menu .right-eye {
+    position: absolute;
+    top: 15px; /* Position near top of menu */
+    width: 9px;
+    height: 9px;
+    background-color: rgb(0, 195, 255);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+    transition: all 1s ease;
+    z-index: 11;
+}
+
+.portfolio-menu .left-eye {
+    left: 30%;
+}
+
+.portfolio-menu .right-eye {
+    right: 30%;
+}
+
+/* Hover effect for ear wiggle speed-up */
+.portfolio-menu:hover::before {
+    animation: leftEarWiggle 1s infinite ease-in-out;
+}
+
+.portfolio-menu:hover::after {
+    animation: rightEarWiggle 1s infinite ease-in-out;
+}
+
+/* Light mode version */
+body.light-mode .portfolio-menu::before {
+    border-color: transparent rgba(255, 255, 255, 0.85) transparent transparent;
+}
+
+body.light-mode .portfolio-menu::after {
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.85);
+}
+
+.portfolio-menu.show {
+    display: flex; /* Show menu */
+    opacity: 1; /* Fully visible */
+    animation: popOut 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Bouncy animation */
+}
+
+.portfolio-menu.hide {
+    animation: suckIn 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards; /* Fast suck-in */
+}
+
+/* Pop-out animation */
+@keyframes popOut {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(20px);
+    }
+    70% {
+        transform: scale(1.1) translateY(-5px); /* Overshoot for a bouncy effect */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Suck-in animation */
+@keyframes suckIn {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(20px) rotate(-10deg);
+    }
+}
+
+.portfolio-menu a {
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Space Mono', monospace;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    border-left: 2px solid transparent;
+    letter-spacing: 1px;
+}
+
+.portfolio-menu a:hover {
+    background-color: rgba(0, 128, 255, 0.2);
+    color: rgb(255, 255, 255);
+    border-left: 2px solid rgba(0, 195, 255, 0.9);
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(0, 128, 255, 0.2);
+    letter-spacing: 1.5px;
+}
+
+/* Floating Text Styles - Updated for transparent background */
+.floating-text {
+    position: absolute;
+    top: 41%; /* Moved up slightly to make room for the author name */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the text */
+    font-family: 'Nova Square', sans-serif;
+    font-size: 20px; /* Larger text size */
+    color: rgba(255, 255, 255, 0.95); /* Brighter white text */
+    text-shadow: 0 0 10px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.4); /* Cool blue glow */
+    min-width: 1ch;
+    max-width: 80%; /* Limit width to prevent overflow */
+    padding: 10px 20px;
+    overflow: hidden; /* Hide overflow for typing effect */
+    white-space: nowrap; /* Keep text on a single line */
+    border-right: 3px solid rgba(0, 195, 255, 0.9); /* Brighter cursor */
+    animation: blink-caret 0.75s step-end infinite;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    /* Removed background for transparent effect, only keeping the glow */
+}
+
+/* Author name styling - positioned under the floating text */
+.author-name {
+    position: absolute;
+    top: 45%; /* Position below the floating text */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, 0); /* Center the text */
+    font-family: 'Audiowide', cursive;
+    font-size: 15px;
+    opacity: 0; /* Start invisible for animation */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-right-color: transparent;
+    }
+    50% {
+        border-right-color: rgba(19, 180, 255, 0.9); /* Blinking cursor */
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #00134e; /* Dark blue background */
+    background-image: linear-gradient(to bottom right, #00134e, #001a2e);
+}
+
+body.dark-mode img {
+    opacity: 1; /* Fully visible in dark mode */
+}
+
+body.dark-mode .portfolio-menu {
+    background: rgba(15, 20, 40, 0.85); /* Dark semi-transparent background */
+}
+
+body.dark-mode .portfolio-menu a {
+    color: rgba(255, 255, 255, 0.85); /* White text color in dark mode */
+}
+
+body.dark-mode .portfolio-menu a:hover {
+    background-color: rgba(0, 128, 255, 0.2);
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .portfolio-menu .left-eye,
+body.dark-mode .portfolio-menu .right-eye {
+    background-color: rgb(0, 195, 255); /* Bright blue eyes in dark mode */
+    box-shadow: 0 0 5px rgba(0, 195, 255, 0.8);
+}
+
+body.dark-mode .floating-text {
+    color: rgba(255, 255, 255, 0.95); /* White text in dark mode */
+    text-shadow: 0 0 10px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.4);
+    border-right-color: rgba(0, 195, 255, 0.9);
+}
+
+body.dark-mode .author-name {
+    color: rgb(81, 197, 255); /* Bright blue in dark mode */
+    text-shadow: 0 0 8px rgba(0, 92, 168, 0.796), 0 0 15px rgba(0, 128, 255, 0.4);
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #add8e6; /* Light blue background */
+    background-image: linear-gradient(to bottom right, #add8e6, #e6f7ff);
+}
+
+body.light-mode img {
+    opacity: 0.95; /* Slightly transparent in light mode for a magical effect */
+}
+
+body.light-mode .portfolio-menu {
+    background: rgba(255, 255, 255, 0.85); /* Light semi-transparent background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 128, 255, 0.15);
+    border: 1px solid rgba(0, 128, 255, 0.1);
+}
+
+body.light-mode .portfolio-menu a {
+    font-family: 'Space Mono', monospace;
+    color: #003366; /* Dark blue text color in light mode */
+}
+
+body.light-mode .portfolio-menu a:hover {
+    background-color: rgba(135, 206, 250, 0.3); /* Light blue hover in light mode */
+    color: #001f3f;
+    border-left: 2px solid rgba(0, 99, 199, 0.9);
+}
+
+body.light-mode .portfolio-menu .left-eye,
+body.light-mode .portfolio-menu .right-eye {
+    background-color: #00ffee; /* Dark blue eyes in light mode */
+    box-shadow: 0 0 5px rgba(0, 145, 255, 0.864);
+}
+
+body.light-mode .floating-text {
+    color: #000b16; /* Dark blue text in light mode */
+    text-shadow: 0 0 10px rgba(0, 129, 129, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+    border-right-color: #003366;
+}
+
+body.light-mode .author-name {
+    color: #0056ac; /* Dark blue in light mode */
+    text-shadow: 0 0 8px rgba(91, 173, 255, 0.795), 0 0 15px rgba(0, 99, 199, 0.5);
+}
+
+/* Animation for Sun to Moon */
+body.dark-mode .icon {
+    transform: rotate(0deg); /* Moon icon is upright */
+    opacity: 1;
+}
+
+body.light-mode .icon {
+    transform: rotate(180deg); /* Sun icon is rotated */
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    button {
+        width: 35px; /* Smaller button on smaller screens */
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .arrow {
+        font-size: 25px; /* Smaller arrow on smaller screens */
+    }
+    
+    .signature {
+        font-size: 14px;
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .floating-text {
+        font-size: 18px;
+        max-width: 75%;
+        padding: 8px 16px;
+    }
+    
+    .author-name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        width: 30px; /* Smaller button on very small screens */
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .arrow {
+        font-size: 20px; /* Smaller arrow on very small screens */
+    }
+    
+    .signature {
+        font-size: 12px;
+        bottom: 70px;
+        right: 15px;
+    }
+    
+    .floating-text {
+        font-size: 16px;
+        max-width: 70%;
+        padding: 6px 12px;
+        letter-spacing: 1px;
+    }
+    
+    .author-name {
+        font-size: 12px;
+    }
+}
+
+@keyframes pulse-glow {
+    0% { text-shadow: 0 0 10px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.4); }
+    50% { text-shadow: 0 0 15px rgba(0, 195, 255, 0.9), 0 0 30px rgba(0, 195, 255, 0.6); }
+    100% { text-shadow: 0 0 10px rgba(0, 128, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.4); }
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -5px); }
+    100% { transform: translate(-50%, 0); }
+}
+
+/* Alternative Cat Ears Style - More pointy and integrated */
+.portfolio-menu::before,
+.portfolio-menu::after {
+    content: '';
+    position: absolute;
+    top: -23px; /* Positioned above the menu */
+    height: 30px; /* Taller ears */
+    width: 35px; /* Wider base */
+    background-color: transparent; /* No background */
+    z-index: -1;
+}
+
+/* Left ear */
+.portfolio-menu::before {
+    left: 3%; /* Move the left ear further to the left */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle shape */
+    background-color: rgba(15, 20, 40, 0.85); /* Same as menu background */
+    transform-origin: bottom center;
+    transform: rotate(-10deg);
+    animation: leftPointyEarWiggle 3s infinite ease-in-out;
+}
+
+/* Right ear */
+.portfolio-menu::after {
+    right: 3%; /* Move the right ear further to the right */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle shape */
+    background-color: rgba(15, 20, 40, 0.85); /* Same as menu background */
+    transform-origin: bottom center;
+    transform: rotate(10deg);
+    animation: rightPointyEarWiggle 3s infinite ease-in-out;
+}
+
+/* Light mode specific ears */
+body.light-mode .portfolio-menu::before,
+body.light-mode .portfolio-menu::after {
+    background-color: rgba(255, 255, 255, 0.85); /* Match light mode menu */
+}
+
+/* Cat ears animations for pointy version */
+@keyframes leftPointyEarWiggle {
+    0%, 100% { transform: rotate(-10deg) translateY(0); }
+    30% { transform: rotate(-5deg) translateY(-2px); }
+    50% { transform: rotate(-15deg) translateY(0); }
+    70% { transform: rotate(-8deg) translateY(-1px); }
+}
+
+@keyframes rightPointyEarWiggle {
+    0%, 100% { transform: rotate(10deg) translateY(0); }
+    30% { transform: rotate(15deg) translateY(-2px); }
+    50% { transform: rotate(5deg) translateY(0); }
+    70% { transform: rotate(12deg) translateY(-1px); }
+}

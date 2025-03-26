@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Zaynab Ait Addi</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="stars.css">
+    <link rel="stylesheet" href="morning-sky.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&family=Space+Mono&family=Nova+Square&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <div class="image-wrapper">
+            <img id="modeImage" src="PF/Darkmode.gif" alt="Mode Image">
+            <div class="floating-text" id="floatingText"></div>
+            <div class="author-name" id="authorName">Zaynab Ait Addi</div>
+            <button id="toggleButton">
+                <span class="icon">🌙</span>
+            </button>
+            <div class="arrow" id="portfolioArrow">
+                <span class="menu-label">Menu</span>
+                <span class="arrow-icon">⭐</span>
+            </div>
+            <div class="portfolio-menu" id="portfolioMenu">
+                <div class="left-eye"></div>
+                <div class="right-eye"></div>
+                <a href="PF.html">Home</a>
+                <a href="about.html" class="active">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-card">
+                <h1>About Me</h1>
+                <div class="about-text">
+                    <p>I'm an engineering student specializing in AI and digital innovation, building my skills in programming, software development, and system design. I'm eager to apply what I'm learning through internships, projects, or any opportunity where I can grow and contribute.</p>
+                </div>
+            </div>
+            
+            <div class="cv-section">
+                <div class="section-header">
+                    <span class="section-icon">📄</span>
+                    <h2>My Resume</h2>
+                </div>
+                
+                <div class="cv-container">
+                    <!-- English CV Card -->
+                    <div class="cv-card" data-lang="english">
+                        <div class="cv-preview">
+                            <img src="PF/ENG.png" alt="English CV Preview" class="cv-image">
+                            <div class="cv-overlay">
+                                <div class="cv-actions">
+                                    <button class="cv-action-btn view-btn" data-img="PF/ENG.png">
+                                        <span class="action-icon">👁️</span>
+                                        <span class="action-text">View</span>
+                                    </button>
+                                    <a href="PF/ENG.pdf" download class="cv-action-btn download-btn">
+                                        <span class="action-icon">⬇️</span>
+                                        <span class="action-text">Download PDF</span>
+                                    </a>
+                                    <a href="https://drive.google.com/file/d/1BIDIvpNpltieiM3kqfIj5_Cr-6mqq3rl/view?usp=sharing" target="_blank" class="cv-action-btn drive-btn">
+                                        <span class="action-icon">☁️</span>
+                                        <span class="action-text">Drive</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cv-info">
+                            <h3>English CV</h3>
+                            <div class="cv-tags">
+                                <span>Professional</span>
+                                <span>Updated</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- French CV Card -->
+                    <div class="cv-card" data-lang="french">
+                        <div class="cv-preview">
+                            <img src="PF/FR.png" alt="French CV Preview" class="cv-image">
+                            <div class="cv-overlay">
+                                <div class="cv-actions">
+                                    <button class="cv-action-btn view-btn" data-img="PF/FR.png">
+                                        <span class="action-icon">👁️</span>
+                                        <span class="action-text">View</span>
+                                    </button>
+                                    <a href="PF/FR.pdf" download class="cv-action-btn download-btn">
+                                        <span class="action-icon">⬇️</span>
+                                        <span class="action-text">Download PDF</span>
+                                    </a>
+                                    <a href="https://drive.google.com/file/d/1BGhcIUWdaI5fzF6L6Uifr_h2F8DqZB05/view?usp=sharing" target="_blank" class="cv-action-btn drive-btn">
+                                        <span class="action-icon">☁️</span>
+                                        <span class="action-text">Drive</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cv-info">
+                            <h3>French CV</h3>
+                            <div class="cv-tags">
+                                <span>Professionnel</span>
+                                <span>À jour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Modal -->
+                <div id="imageModal" class="image-modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="image-container">
+                            <img id="modalImage" src="" alt="CV Full View">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card education">
+                <div class="card-header">
+                    <span class="card-icon">🎓</span>
+                    <h2>Education</h2>
+                </div>
+                <ul>
+                    <li>
+                        <div class="school-container">
+                            <a href="https://ensah.ma/" target="_blank" class="school-link" title="Visit ENSAH Official Website">
+                                <span>École Nationale des Sciences Appliquées d'AI Hocelma (ENSAH)</span>
+                                <img src="PF/ENSAH.png" alt="ENSAH Logo" class="school-logo">
+                            </a>
+                        </div>
+                        <p>TDIA Engineer (Digital Transformation & AI Engineering)</p>
+                        <p class="date">2024 - Present</p>
+                        <p>Preparatory Years in Engineering</p>
+                        <p class="date">2022 - 2024</p>
+                    </li>
+                    <li><span>Nahda High School</span>
+                        <p>Bachelor of Science in Physics</p>
+                        <p class="date">2021 - 2022</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-card skills">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <h2>Technical Skills</h2>
+                </div>
+                <div class="skills-container">
+                    <!-- Programming Languages -->
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span>Python</span>
+                            <span>Java</span>
+                            <span>C</span>
+                            <span>SQL</span>
+                            <span>MATLAB</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+            
+                    <!-- Frameworks & Libraries -->
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skill-tags">
+                            <span>React</span>
+                            <span>Django</span>
+                            <span>PySide</span>
+                            <span>Tkinter</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+            
+                    <!-- Design & Creative Tools -->
+                    <div class="skill-category">
+                        <h3>Design & Creative Tools</h3>
+                        <div class="skill-tags">
+                            <span>Figma</span>
+                            <span>Krita</span>
+                            <span>Canva</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+            
+                    <!-- Operating Systems & Scripting -->
+                    <div class="skill-category">
+                        <h3>Operating Systems & Scripting</h3>
+                        <div class="skill-tags">
+                            <span>Linux (Ubuntu, Arch Linux)</span>
+                            <span>Shell Scripting</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+            
+                    <!-- Tools & Software -->
+                    <div class="skill-category">
+                        <h3>Tools & Software</h3>
+                        <div class="skill-tags">
+                            <span>POWERAMC (Data Modeling)</span>
+                            <span>Archi (Enterprise Architecture Modeling)</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+            
+                    <!-- Additional Skills -->
+                    <div class="skill-category">
+                        <h3>Additional Skills</h3>
+                        <div class="skill-tags">
+                            <span>Machine Learning (TensorFlow, PyTorch)</span>
+                            <span>Data Visualization (GNU Plot, Matplotlib)</span>
+                            <span>DevOps (CI/CD, Docker)</span>
+                            <span>etc...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="about.js"></script>
+    <script src="stars.js"></script>
+    <script src="morning-sky.js"></script>
+</body>
+</html>

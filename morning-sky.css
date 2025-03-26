@@ -1,0 +1,146 @@
+/* morning-sky.css */
+.morning-sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* This is correct, keep it */
+    background: linear-gradient(to bottom, #017ad0, #B0E0E6, #E0FFFF);
+    overflow: hidden;
+    display: none; /* Hidden by default */
+}
+
+/* Only show in light mode */
+body:not(.dark-mode) .morning-sky {
+    display: block;
+}
+
+/* Sun */
+.sun {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at center, 
+        rgba(255, 255, 190, 1) 0%, 
+        rgba(255, 230, 150, 0.9) 30%, 
+        rgba(255, 170, 100, 0.8) 60%, 
+        rgba(255, 170, 100, 0) 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(255, 220, 100, 0.8);
+    animation: sun-glow 10s infinite alternate;
+}
+
+/* Sun rays */
+.sun::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(circle at center, 
+        rgba(255, 255, 200, 0.4) 0%, 
+        rgba(255, 255, 200, 0) 70%);
+    border-radius: 50%;
+    animation: sun-ray-pulse 6s infinite alternate;
+}
+
+@keyframes sun-glow {
+    0% { box-shadow: 0 0 50px rgba(255, 220, 100, 0.7); }
+    100% { box-shadow: 0 0 70px rgba(255, 220, 100, 0.9); }
+}
+
+@keyframes sun-ray-pulse {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* Regular clouds */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0.85;
+    animation: float 60s infinite linear;
+}
+
+/* Cloud movement animation */
+@keyframes floating-cloud {
+    0% { transform: translateX(-150px); }
+    100% { transform: translateX(calc(100vw + 150px)); }
+}
+
+/* Fluffy cloud parts */
+.cloud-part {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* Small wisps */
+.wisp {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: wisp-float 40s infinite linear;
+}
+
+@keyframes wisp-float {
+    0% { transform: translateX(-100px) translateY(0); }
+    50% { transform: translateX(calc(50vw)) translateY(-20px); }
+    100% { transform: translateX(calc(100vw + 100px)) translateY(0); }
+}
+
+/* Colorful accents in the sky */
+.sky-accent {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.2;
+    animation: accent-pulse 20s infinite alternate;
+}
+
+@keyframes accent-pulse {
+    0% { opacity: 0.1; transform: scale(1); }
+    100% { opacity: 0.25; transform: scale(1.1); }
+}
+
+/* Light rays through clouds */
+.light-ray {
+    position: absolute;
+    top: 5%;
+    right: 15%;
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(ellipse at top right, 
+        rgba(255, 240, 180, 0.3) 0%, 
+        rgba(255, 240, 180, 0) 70%);
+    transform: rotate(-30deg) skewX(30deg);
+    animation: ray-pulse 15s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes ray-pulse {
+    0% { opacity: 0.2; transform: rotate(-30deg) skewX(30deg) scale(1); }
+    100% { opacity: 0.4; transform: rotate(-30deg) skewX(30deg) scale(1.1); }
+}
+
+/* Morning mist at the bottom */
+.morning-mist {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(230, 240, 255, 0.3) 40%, 
+        rgba(230, 240, 255, 0.7) 100%);
+    filter: blur(15px);
+}
