@@ -136,14 +136,13 @@ button:hover {
     border: 1px solid rgba(0, 128, 255, 0.2);
     display: none;
     flex-direction: column;
-    padding: 20px 15px 15px 15px;
+    padding: 15px 10px 10px 10px; /* Reduced padding */
     z-index: 10;
     opacity: 0;
     transform: scale(0.5) translateY(20px);
     transform-origin: bottom right;
     transition: opacity 0.3s ease, transform 0.3s ease;
     backdrop-filter: blur(5px);
-    border-top: 700px;
 }
 
 /* Cat Ears Style */
@@ -274,9 +273,9 @@ body.light-mode .portfolio-menu::after {
     color: rgba(255, 255, 255, 0.85);
     font-family: 'Space Mono', monospace;
     text-decoration: none;
-    padding: 10px 15px;
-    margin: 5px 0;
-    font-size: 16px;
+    padding: 8px 12px; /* Reduced padding */
+    margin: 4px 0; /* Reduced margin */
+    font-size: 14px; /* Base font size */
     transition: all 0.3s ease;
     border-radius: 8px;
     border-left: 2px solid transparent;
@@ -555,4 +554,71 @@ body.light-mode .portfolio-menu::after {
     30% { transform: rotate(15deg) translateY(-2px); }
     50% { transform: rotate(5deg) translateY(0); }
     70% { transform: rotate(12deg) translateY(-1px); }
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .portfolio-menu {
+        padding: 12px 8px 8px 8px; /* Further reduced padding */
+        min-width: 110px; /* Smaller minimum width */
+    }
+    
+    .portfolio-menu a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .portfolio-menu .left-eye,
+    .portfolio-menu .right-eye {
+        width: 6px;
+        height: 6px;
+        top: 10px;
+    }
+    
+    .portfolio-menu::before,
+    .portfolio-menu::after {
+        top: -18px;
+        height: 22px;
+        width: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-menu {
+        padding: 10px 6px 6px 6px;
+        min-width: 95px;
+        border-radius: 15px;
+    }
+    
+    .portfolio-menu a {
+        padding: 5px 8px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+    
+    .portfolio-menu .left-eye,
+    .portfolio-menu .right-eye {
+        width: 5px;
+        height: 5px;
+        top: 8px;
+    }
+    
+    .portfolio-menu::before,
+    .portfolio-menu::after {
+        top: -15px;
+        height: 20px;
+        width: 25px;
+    }
+}
+/* Ensure the menu maintains its position relative to the arrow */
+@media (max-width: 480px) {
+    .portfolio-menu {
+        bottom: 50px;
+        right: 15px;
+    }
+    
+    .arrow {
+        bottom: 15px;
+        right: 15px;
+    }
 }

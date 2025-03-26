@@ -238,4 +238,50 @@ document.addEventListener('DOMContentLoaded', function() {
   modalImage.addEventListener('mouseleave', function() {
       this.style.transform = 'scale(1)';
   });
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  cvCards.forEach(card => {
+      if (isMobile) {
+          // Mobile-specific adjustments
+          const overlay = card.querySelector('.cv-overlay');
+          const image = card.querySelector('.cv-image');
+          
+          // Make overlay always visible on mobile
+          if (overlay) {
+              overlay.style.opacity = '1';
+              overlay.style.background = 'rgba(0, 20, 50, 0.85)';
+              overlay.style.padding = '10px';
+          }
+          
+          // Adjust image for mobile
+          if (image) {
+              image.style.filter = 'blur(1px) brightness(0.8)';
+          }
+          
+          // Make entire card clickable to view
+          card.style.cursor = 'pointer';
+          card.addEventListener('click', function(e) {
+              if (!e.target.closest('.cv-action-btn')) {
+                  const viewBtn = this.querySelector('.view-btn');
+                  if (viewBtn) viewBtn.click();
+              }
+          });
+      } else {
+          // Desktop hover effects
+          card.addEventListener('mouseenter', function() {
+              this.style.boxShadow = '0 12px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 128, 255, 0.3)';
+          });
+          
+          card.addEventListener('mouseleave', function() {
+              this.style.boxShadow = '';
+          });
+      }
+      
+      // Prevent button text from wrapping
+      const buttons = card.querySelectorAll('.cv-action-btn');
+      buttons.forEach(btn => {
+          btn.style.whiteSpace = 'nowrap';
+      });
+  });
 });

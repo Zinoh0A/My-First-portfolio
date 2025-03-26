@@ -287,7 +287,7 @@ button:hover {
 }
 
 .projects-card {
-    background: rgba(15, 20, 40, 0.7);
+    background: rgba(0, 19, 63, 0.552);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
@@ -319,7 +319,7 @@ button:hover {
 }
 
 .project-card {
-    background: rgba(15, 20, 40, 0.7);
+    background: rgba(0, 9, 44, 0.564);
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);

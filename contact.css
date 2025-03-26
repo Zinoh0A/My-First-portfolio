@@ -309,21 +309,19 @@ body.light-mode .portfolio-menu .right-eye {
 
 /* Contact Content */
 .contact-content {
-    margin-top: 30px;
-    margin-bottom: 60px; /* Added margin at the bottom */
+    margin-top: 40px;
+    margin-bottom: 20px; /* Added margin at the bottom */
     display: flex;
     flex-direction: column;
     gap: 30px;
     transition: transform 0.5s ease;
-    padding-bottom: 40px; /* Added padding at the bottom */
+    padding-bottom: 20px; /* Added padding at the bottom */
 }
 
 .contact-card {
     background: rgba(15, 20, 40, 0.7);
     border-radius: 20px;
-    padding: 30px;
-    padding-bottom: 50px; /* Increased bottom padding */
-    margin-bottom: 30px; /* Added margin at bottom */
+    padding: 10px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 128, 255, 0.2);
     transition: all 0.3s ease;

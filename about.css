@@ -314,6 +314,7 @@ button:hover {
     border: 1px solid rgba(0, 128, 255, 0.2);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    margin-bottom: -10px;
 }
 
 .about-card:hover {
@@ -421,20 +422,22 @@ button:hover {
 .skills-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-height: 400px; /* Adjust this value as needed */
+    gap: 15px;
+    max-height: 400px; /* Fixed height */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 10px; /* Add some padding to avoid scrollbar overlap */
+    padding-right: 10px; /* Prevent scrollbar overlap */
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 .skill-category {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .skill-category h3 {
     font-family: 'Nova Square', sans-serif;
     font-size: 1.2rem;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     color: rgba(255, 255, 255, 0.95);
     text-shadow: 0 0 5px rgba(0, 128, 255, 0.5);
 }
@@ -442,20 +445,21 @@ button:hover {
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    max-height: 150px; /* Adjust this value as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 10px; /* Add some padding to avoid scrollbar overlap */
+    gap: 8px;
+    max-height: 120px; /* Limit height of tags container */
+    overflow-y: auto; /* Enable scrolling for tags if needed */
+    padding-right: 5px; /* Prevent scrollbar overlap */
 }
 
 .skill-tags span {
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
     background: rgba(0, 128, 255, 0.15);
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.9rem;
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 128, 255, 0.3);
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .skill-tags span:hover {
@@ -1202,4 +1206,112 @@ body.light-mode #modalImage {
 .school-link:hover .tooltip {
     visibility: visible;
     opacity: 1;
+}
+
+/* CV Section Mobile Improvements */
+@media (max-width: 768px) {
+    .cv-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .cv-card {
+        width: 100%;
+        min-height: auto;
+    }
+    
+    .cv-preview {
+        height: 150px;
+    }
+    
+    .cv-overlay {
+        opacity: 1 !important;
+        background: rgba(0, 20, 50, 0.85);
+        padding: 10px;
+    }
+    
+    .cv-actions {
+        flex-direction: row;
+        gap: 8px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .cv-action-btn {
+        padding: 8px 12px;
+        min-width: 0;
+        flex: 1;
+        max-width: 100px;
+        font-size: 0.75rem;
+    }
+    
+    .action-icon {
+        margin-right: 0;
+        font-size: 0.9rem;
+    }
+    
+    .action-text {
+        display: none;
+    }
+    
+    /* Specific button icons */
+    .view-btn::before {
+        content: "view";
+        margin-right: 0;
+    }
+    
+    .download-btn::before {
+        content: "⬇Download";
+        margin-right: 0;
+    }
+    
+    .drive-btn::before {
+        content: "Drive";
+        margin-right: 0;
+    }
+    
+    .cv-info {
+        padding: 10px 12px;
+    }
+    
+    .cv-info h3 {
+        font-size: 1rem;
+    }
+    
+    .cv-tags span {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cv-preview {
+        height: 120px;
+    }
+    
+    .cv-actions {
+        gap: 5px;
+    }
+    
+    .cv-action-btn {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        max-width: 80px;
+    }
+    
+    .cv-image {
+        filter: blur(1px) brightness(0.8) !important;
+    }
+}
+
+/* Touch device detection */
+@media (hover: none) {
+    .cv-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    .cv-overlay {
+        opacity: 1 !important;
+    }
 }
