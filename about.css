@@ -10,8 +10,11 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers all child elements */
 }
 
 .image-wrapper {
@@ -1165,7 +1168,7 @@ body.light-mode #modalImage {
     color: inherit;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     transition: transform 0.3s ease;
 }
 
@@ -1178,6 +1181,7 @@ body.light-mode #modalImage {
     height: auto;
     max-height: 50px;
     transition: transform 0.3s ease;
+    margin-right: 10px;
 }
 
 .school-link:hover .school-logo {
