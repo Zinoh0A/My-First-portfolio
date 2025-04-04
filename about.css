@@ -1319,3 +1319,70 @@ body.light-mode #modalImage {
         opacity: 1 !important;
     }
 }
+
+/* Add these styles to your about.css file */
+
+/* Light Mode Mobile CV Adjustments */
+@media (max-width: 768px) {
+    body.light-mode .cv-container {
+      background-color: transparent;
+      padding: 0;
+    }
+  
+    body.light-mode .cv-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 102, 204, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+  
+    body.light-mode .cv-preview {
+      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+    }
+  
+    body.light-mode .cv-overlay {
+      background: rgba(255, 255, 255, 0.7);
+    }
+  
+    body.light-mode .cv-action-btn {
+      background: rgba(0, 102, 204, 0.25);
+      color: #003366;
+      border: 1px solid rgba(0, 102, 204, 0.4);
+    }
+  
+    body.light-mode .cv-action-btn:hover {
+      background: rgba(0, 102, 204, 0.35);
+    }
+  
+    body.light-mode .cv-info h3 {
+      color: #003366;
+    }
+  
+    body.light-mode .cv-tags span {
+      background: rgba(0, 102, 204, 0.15);
+      color: #003366;
+      border: 1px solid rgba(0, 102, 204, 0.25);
+    }
+  }
+  
+  /* Extra small devices (phones, 480px and down) */
+  @media (max-width: 480px) {
+    body.light-mode .cv-card {
+      padding: 0;
+    }
+  
+    body.light-mode .cv-actions {
+      flex-direction: row;
+      gap: 6px;
+    }
+  
+    body.light-mode .cv-action-btn {
+      padding: 8px 10px;
+      font-size: 0.7rem;
+      min-width: 0;
+      flex: 1;
+    }
+  
+    body.light-mode .action-text {
+      display: none;
+    }
+}
