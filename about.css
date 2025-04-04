@@ -1322,67 +1322,57 @@ body.light-mode #modalImage {
 
 /* Add these styles to your about.css file */
 
-/* Light Mode Mobile CV Adjustments */
+/* ===== LIGHT MODE MOBILE CV (CLEAN & BRIGHT) ===== */
 @media (max-width: 768px) {
-    body.light-mode .cv-container {
-      background-color: transparent;
-      padding: 0;
+    body.light-mode .cv-section {
+      background: transparent !important; /* Remove dark bg */
     }
   
     body.light-mode .cv-card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 102, 204, 0.3);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background: #ffffff !important;
+      border: 1px solid #b3d9ff !important; /* Soft blue border */
+      box-shadow: 0 2px 10px rgba(0, 102, 204, 0.1) !important;
     }
   
     body.light-mode .cv-preview {
-      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+      border-bottom: 1px solid #e6f2ff2b !important; /* Lighter blue divider */
     }
   
     body.light-mode .cv-overlay {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.9) !important; /* Near-white overlay */
     }
   
     body.light-mode .cv-action-btn {
-      background: rgba(0, 102, 204, 0.25);
-      color: #003366;
-      border: 1px solid rgba(0, 102, 204, 0.4);
+      background: #e6f2ff !important; /* Light blue bg */
+      color: #0066cc !important; /* Vibrant blue text */
+      border: 1px solid #99ccff !important;
     }
   
     body.light-mode .cv-action-btn:hover {
-      background: rgba(0, 102, 204, 0.35);
+      background: #cce6ff !important; /* Slightly darker blue */
     }
   
     body.light-mode .cv-info h3 {
-      color: #003366;
+      color: #004080 !important; /* Deep blue heading */
     }
   
     body.light-mode .cv-tags span {
-      background: rgba(0, 102, 204, 0.15);
-      color: #003366;
-      border: 1px solid rgba(0, 102, 204, 0.25);
+      background: #f0f7ff !important; /* Subtle blue tag bg */
+      color: #0066cc !important;
+      border: 1px solid #cce6ff !important;
     }
   }
   
-  /* Extra small devices (phones, 480px and down) */
+  /* Tiny Screens: Icons Only */
   @media (max-width: 480px) {
-    body.light-mode .cv-card {
-      padding: 0;
-    }
-  
-    body.light-mode .cv-actions {
-      flex-direction: row;
-      gap: 6px;
-    }
-  
     body.light-mode .cv-action-btn {
-      padding: 8px 10px;
-      font-size: 0.7rem;
-      min-width: 0;
-      flex: 1;
+      min-width: 40px !important; /* Square icon buttons */
+      justify-content: center;
     }
-  
     body.light-mode .action-text {
-      display: none;
+      display: none !important; /* Hide text */
     }
-}
+    body.light-mode .action-icon {
+      margin-right: 0 !important; /* Center icon */
+    }
+  }
