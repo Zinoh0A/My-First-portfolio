@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
       if (body.classList.contains('dark-mode')) {
           body.classList.remove('dark-mode');
           body.classList.add('light-mode');
-          modeImage.src = 'PF/Lightmode.gif';
+          modeImage.src = 'PF/Lightmode.webp';
           icon.textContent = '☀️'; // Sun icon for light mode
           portfolioArrow.querySelector('.arrow-icon').textContent = '☁️'; // Cloud icon for light mode
       } else {
           body.classList.remove('light-mode');
           body.classList.add('dark-mode');
-          modeImage.src = 'PF/Darkmode.gif';
+          modeImage.src = 'PF/Darkmode.webp';
           icon.textContent = '🌙'; // Moon icon for dark mode
           portfolioArrow.querySelector('.arrow-icon').textContent = '⭐'; // Star icon for dark mode
       }

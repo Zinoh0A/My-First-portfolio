@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (body.classList.contains('dark-mode')) {
             body.classList.remove('dark-mode');
             body.classList.add('light-mode');
-            modeImage.src = 'PF/Lightmode.gif';
+            modeImage.src = 'PF/Lightmode.webp';
             icon.textContent = '☀️';
             portfolioArrow.querySelector('.arrow-icon').textContent = '☁️';
         } else {
             body.classList.remove('light-mode');
             body.classList.add('dark-mode');
-            modeImage.src = 'PF/Darkmode.gif';
+            modeImage.src = 'PF/Darkmode.webp';
             icon.textContent = '🌙';
             portfolioArrow.querySelector('.arrow-icon').textContent = '⭐';
         }
