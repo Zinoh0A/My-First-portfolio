@@ -1,187 +1,178 @@
-/* night-sky.css */
+/* Optimized night-sky.css */
 .night-sky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(to bottom, #0a0056, #040f5282, #00214d);
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(to bottom, #0a0056, #040f5282, #00214d);
+  overflow: hidden;
+  will-change: transform; /* Optimize for GPU acceleration */
+  backface-visibility: hidden; /* Improve performance */
 }
-  
-  /* Stars */
+
+/* Base star styles with hardware acceleration */
 .star {
-    position: absolute;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translateZ(0); /* Force GPU acceleration */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
-  
+
+/* Simplified star sizes with reduced animation complexity */
 .star.tiny {
-    width: 1px;
-    height: 1px;
-    opacity: 0.6;
-    animation: twinkle 4s infinite ease-in-out;
+  width: 1px;
+  height: 1px;
+  opacity: 0.6;
+  animation: twinkle 8s infinite ease-in-out;
 }
-  
+
 .star.small {
-    width: 2px;
-    height: 2px;
-    opacity: 0.8;
-    animation: twinkle 6s infinite ease-in-out;
+  width: 2px;
+  height: 2px;
+  opacity: 0.8;
+  animation: twinkle 10s infinite ease-in-out;
 }
-  
+
 .star.medium {
-    width: 3px;
-    height: 3px;
-    opacity: 0.9;
-    animation: twinkle 8s infinite ease-in-out;
+  width: 3px;
+  height: 3px;
+  opacity: 0.9;
+  animation: twinkle 12s infinite ease-in-out;
 }
-  
+
 .star.large {
-    width: 4px;
-    height: 4px;
-    opacity: 1;
-    animation: twinkle 10s infinite ease-in-out;
+  width: 4px;
+  height: 4px;
+  opacity: 1;
+  animation: twinkle 15s infinite ease-in-out;
 }
-  
-  /* Twinkling animation */
+
+/* Optimized twinkling animation */
 @keyframes twinkle {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
 }
-  
-  /* Bright stars with special glow */
+
+/* Reduced number of bright stars */
 .bright-star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff;
-    animation: pulse 5s infinite alternate;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffffff;
+  animation: pulse 8s infinite alternate;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
 }
-  
+
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff; }
-    100% { transform: scale(1.2); box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff; }
+  0% { transform: scale(1); box-shadow: 0 0 10px #ffffff; }
+  100% { transform: scale(1.1); box-shadow: 0 0 15px #ffffff; }
 }
-  
-  /* Colorful stars */
+
+/* Simplified colored stars */
 .colored-star {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    animation: color-shift 10s infinite alternate;
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  animation: color-shift 15s infinite alternate;
+  transform: translateZ(0);
+  will-change: background, box-shadow;
 }
-  
+
 @keyframes color-shift {
-    0% { background: #ff9966; box-shadow: 0 0 10px #ff9966, 0 0 20px #ff9966; }
-    25% { background: #66ccff; box-shadow: 0 0 10px #66ccff, 0 0 20px #66ccff; }
-    50% { background: #ff66cc; box-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc; }
-    75% { background: #99ff66; box-shadow: 0 0 10px #99ff66, 0 0 20px #99ff66; }
-    100% { background: #cc99ff; box-shadow: 0 0 10px #cc99ff, 0 0 20px #cc99ff; }
+  0%, 100% { background: #ff9966; box-shadow: 0 0 5px #ff9966; }
+  50% { background: #66ccff; box-shadow: 0 0 5px #66ccff; }
 }
-  
-  /* Shooting stars */
+
+/* Optimized shooting stars */
 .shooting-star {
-    position: absolute;
-    height: 4px; /* Increased height for a thicker tail */
-    width: 150px; /* Default width, but this will be dynamically adjusted in JS */
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
-    transform-origin: left; /* Align the tail with the direction of movement */
-    opacity: 0;
-    animation: shoot linear forwards;
+  position: absolute;
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+  transform-origin: left;
+  opacity: 0;
+  animation: shoot linear forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
-  
+
 @keyframes shoot {
-    0% {
-        opacity: 0;
-        transform: translateX(0) translateY(0) rotate(var(--angle));
-    }
-    5% {
-        opacity: 1;
-        transform: translateX(0) translateY(0) rotate(var(--angle));
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(var(--travel-distance)) translateY(var(--travel-y)) rotate(var(--angle));
-    }
+  0% {
+      opacity: 0;
+      transform: translateX(0) translateY(0) rotate(var(--angle));
+  }
+  5% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: translateX(var(--travel-distance)) translateY(var(--travel-y)) rotate(var(--angle));
+  }
 }
-  
-  /* Milky Way */
+
+/* Simplified Milky Way */
 .milky-way {
-    position: absolute;
-    width: 100%;
-    height: 300px;
-    background: radial-gradient(
+  position: absolute;
+  width: 150%;
+  height: 200px;
+  background: radial-gradient(
       ellipse at center,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0) 60%
-    );
-    transform: rotate(-20deg);
-    filter: blur(5px);
-    opacity: 0.5;
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(-20deg);
+  filter: blur(3px);
+  opacity: 0.4;
+  will-change: transform;
 }
-  
-  /* Nebulas */
+
+/* Optimized nebulas */
 .nebula {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    filter: blur(30px);
-    opacity: 0.2;
-    animation: nebula-pulse 20s infinite alternate;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  filter: blur(20px);
+  opacity: 0.15;
+  animation: nebula-pulse 30s infinite alternate;
+  will-change: transform, opacity;
 }
-  
+
 @keyframes nebula-pulse {
-    0% { opacity: 0.1; transform: scale(1); }
-    100% { opacity: 0.3; transform: scale(1.2); }
+  0% { opacity: 0.1; transform: scale(1); }
+  100% { opacity: 0.2; transform: scale(1.1); }
 }
-  
-  /* Aurora */
-.aurora {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 200px;
-    opacity: 0.3;
-    filter: blur(30px);
-    animation: aurora-wave 15s infinite alternate ease-in-out;
-}
-  
-@keyframes aurora-wave {
-    0% { transform: translateX(-50px) skewX(5deg); }
-    100% { transform: translateX(50px) skewX(-5deg); }
-}
-  
-  /* Moon */
+
+/* Moon with simplified craters */
 .moon {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle at 45% 45%, 
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle at 45% 45%, 
       rgba(255, 255, 255, 1) 0%, 
-      rgba(255, 255, 255, 0.9) 50%, 
-      rgba(255, 255, 255, 0.6) 100%);
-    border-radius: 50%;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      rgba(255, 255, 255, 0.8) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  will-change: transform;
 }
-  
-  /* Moon craters */
+
 .moon::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    width: 10px;
-    height: 10px;
-    background: rgba(230, 230, 230, 0.8);
-    border-radius: 50%;
-    box-shadow: 
-      20px 5px 0 -2px rgba(230, 230, 230, 0.6),
-      5px 25px 0 -1px rgba(230, 230, 230, 0.7),
-      -5px 10px 0 -3px rgba(230, 230, 230, 0.5);
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  background: rgba(230, 230, 230, 0.7);
+  border-radius: 50%;
+  box-shadow: 
+      15px 5px 0 -2px rgba(230, 230, 230, 0.5),
+      5px 15px 0 -1px rgba(230, 230, 230, 0.6);
 }

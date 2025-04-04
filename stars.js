@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     let nightSky = null;
+    let animationFrameId = null;
+    let lastShootingStarTime = 0;
 
     // Function to create stars and celestial elements
     function createStars() {
-        if (nightSky) return; // Avoid creating stars multiple times
+        if (nightSky) return;
 
         // Create the night sky container
         nightSky = document.createElement('div');
@@ -18,32 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
         milkyWay.style.left = '-20%';
         nightSky.appendChild(milkyWay);
 
-        // Create colorful nebulas
+        // Create 3 nebulas instead of 5 for better performance
         const nebulaColors = [
-            'radial-gradient(ellipse at center, rgba(255, 100, 100, 0.3) 0%, rgba(255, 100, 100, 0) 70%)',
-            'radial-gradient(ellipse at center, rgba(100, 100, 255, 0.3) 0%, rgba(100, 100, 255, 0) 70%)',
-            'radial-gradient(ellipse at center, rgba(255, 100, 255, 0.3) 0%, rgba(255, 100, 255, 0) 70%)',
-            'radial-gradient(ellipse at center, rgba(100, 255, 255, 0.3) 0%, rgba(100, 255, 255, 0) 70%)',
-            'radial-gradient(ellipse at center, rgba(255, 255, 100, 0.3) 0%, rgba(255, 255, 100, 0) 70%)'
+            'radial-gradient(ellipse at center, rgba(255, 100, 100, 0.2) 0%, rgba(255, 100, 100, 0) 70%)',
+            'radial-gradient(ellipse at center, rgba(100, 100, 255, 0.2) 0%, rgba(100, 100, 255, 0) 70%)',
+            'radial-gradient(ellipse at center, rgba(100, 255, 255, 0.2) 0%, rgba(100, 255, 255, 0) 70%)'
         ];
 
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             const nebula = document.createElement('div');
             nebula.className = 'nebula';
             nebula.style.top = `${Math.random() * 80}%`;
             nebula.style.left = `${Math.random() * 80}%`;
             nebula.style.background = nebulaColors[i];
-            nebula.style.width = `${Math.random() * 300 + 200}px`;
-            nebula.style.height = `${Math.random() * 300 + 200}px`;
-            nebula.style.animationDelay = `${Math.random() * 5}s`;
+            nebula.style.width = `${Math.random() * 200 + 150}px`;
+            nebula.style.height = `${Math.random() * 200 + 150}px`;
+            nebula.style.animationDelay = `${Math.random() * 10}s`;
             nightSky.appendChild(nebula);
         }
-
-        // Create aurora at the bottom
-        const aurora = document.createElement('div');
-        aurora.className = 'aurora';
-        aurora.style.background = 'linear-gradient(to top, rgba(0, 255, 200, 0.2) 0%, rgba(0, 200, 255, 0.1) 50%, transparent 100%)';
-        nightSky.appendChild(aurora);
 
         // Create moon
         const moon = document.createElement('div');
@@ -52,14 +46,15 @@ document.addEventListener('DOMContentLoaded', function () {
         moon.style.right = '10%';
         nightSky.appendChild(moon);
 
-        // Create stars
+        // Create stars with reduced quantity for mobile
         function createRegularStars() {
-            // Create 1000 regular stars
-            for (let i = 0; i < 1000; i++) {
+            // Reduced star count for mobile performance
+            const starCount = window.innerWidth < 768 ? 300 : 600;
+            
+            for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
 
-                // Determine star size
                 const size = Math.random() * 100;
                 if (size < 70) {
                     star.classList.add('tiny');
@@ -71,114 +66,99 @@ document.addEventListener('DOMContentLoaded', function () {
                     star.classList.add('large');
                 }
 
-                // Position the star
                 star.style.top = `${Math.random() * 100}%`;
                 star.style.left = `${Math.random() * 100}%`;
-
-                // Random delay for twinkling
-                star.style.animationDelay = `${Math.random() * 10}s`;
-
+                star.style.animationDelay = `${Math.random() * 20}s`;
                 nightSky.appendChild(star);
             }
 
-            // Create 20 bright stars
-            for (let i = 0; i < 20; i++) {
+            // Reduced bright stars
+            const brightStarCount = window.innerWidth < 768 ? 10 : 15;
+            for (let i = 0; i < brightStarCount; i++) {
                 const brightStar = document.createElement('div');
                 brightStar.className = 'bright-star';
                 brightStar.style.top = `${Math.random() * 100}%`;
                 brightStar.style.left = `${Math.random() * 100}%`;
-                brightStar.style.animationDelay = `${Math.random() * 5}s`;
+                brightStar.style.animationDelay = `${Math.random() * 8}s`;
                 nightSky.appendChild(brightStar);
             }
 
-            // Create 30 colored stars
-            for (let i = 0; i < 30; i++) {
+            // Reduced colored stars
+            const coloredStarCount = window.innerWidth < 768 ? 15 : 20;
+            for (let i = 0; i < coloredStarCount; i++) {
                 const coloredStar = document.createElement('div');
                 coloredStar.className = 'colored-star';
                 coloredStar.style.top = `${Math.random() * 100}%`;
                 coloredStar.style.left = `${Math.random() * 100}%`;
-                coloredStar.style.animationDelay = `${Math.random() * 10}s`;
+                coloredStar.style.animationDelay = `${Math.random() * 15}s`;
                 nightSky.appendChild(coloredStar);
             }
         }
 
         createRegularStars();
 
-        // Create shooting stars
-        function createShootingStar() {
+        // Optimized shooting stars with requestAnimationFrame
+        function createShootingStar(timestamp) {
+            if (!nightSky) return;
+
+            // Throttle shooting star creation
+            if (timestamp - lastShootingStarTime < 3000) {
+                animationFrameId = requestAnimationFrame(createShootingStar);
+                return;
+            }
+
+            lastShootingStarTime = timestamp;
+
             const shootingStar = document.createElement('div');
             shootingStar.className = 'shooting-star';
 
-            // Randomize starting position on the upper part of the screen
             const startX = Math.random() * 80;
-            const startY = Math.random() * 40;
-
-            // Set travel distance to cross a significant portion of the screen
-            const travelDistance = 300 + Math.random() * 500;
-            const travelY = 100 + Math.random() * 200;
-
-            // Calculate the angle of the trajectory
+            const startY = Math.random() * 30;
+            const travelDistance = 200 + Math.random() * 300;
+            const travelY = 50 + Math.random() * 100;
             const angle = Math.atan2(travelY, travelDistance) * (180 / Math.PI);
 
-            // Apply styles
             shootingStar.style.top = `${startY}%`;
             shootingStar.style.left = `${startX}%`;
-            shootingStar.style.width = `${Math.random() * 80 + 120}px`;
-
-            // Set custom properties for the animation
+            shootingStar.style.width = `${Math.random() * 60 + 80}px`;
             shootingStar.style.setProperty('--travel-distance', `${travelDistance}px`);
             shootingStar.style.setProperty('--travel-y', `${travelY}px`);
             shootingStar.style.setProperty('--angle', `${angle}deg`);
-
-            // Duration between 1-3 seconds for a quick but visible streak
-            const duration = Math.random() * 2 + 1;
+            
+            const duration = Math.random() * 1.5 + 0.5;
             shootingStar.style.animationDuration = `${duration}s`;
 
             nightSky.appendChild(shootingStar);
 
-            // Remove after animation completes
             setTimeout(() => {
-                shootingStar.remove();
+                if (shootingStar.parentNode) {
+                    shootingStar.remove();
+                }
             }, duration * 1000);
+
+            animationFrameId = requestAnimationFrame(createShootingStar);
         }
 
-        // Schedule shooting stars
-        function scheduleShootingStars() {
-            const count = Math.random() > 0.3 ? 1 : 2;
-
-            for (let i = 0; i < count; i++) {
-                setTimeout(createShootingStar, i * 800);
-            }
-
-            const nextInterval = Math.random() * 4000 + 2000;
-            setTimeout(scheduleShootingStars, nextInterval);
-        }
-
-        scheduleShootingStars();
+        // Start shooting stars
+        animationFrameId = requestAnimationFrame(createShootingStar);
     }
 
     // Function to remove stars
     function removeStars() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        
         if (nightSky) {
             nightSky.remove();
             nightSky = null;
         }
     }
 
-    // Initial check for dark mode
-    if (body.classList.contains('dark-mode')) {
-        createStars();
-    }
+    // Initialize stars
+    createStars();
 
-    // Listen for mode changes
-    const toggleButton = document.getElementById('toggleButton');
-    if (toggleButton) {
-        toggleButton.addEventListener('click', function () {
-            if (body.classList.contains('light-mode')) {
-                removeStars(); // Remove stars when switching to light mode
-            } else {
-                createStars(); // Create stars when switching to dark mode
-            }
-        });
-    }
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', removeStars);
 });
